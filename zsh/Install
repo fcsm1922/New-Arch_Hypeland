@@ -1,0 +1,32 @@
+Для правильной работы `oh_my_zsh` нужно сделать
+
+1. sudo pacman --noconfirm -Sy zsh git
+2. Установить zsh  в качестве основного $SHELL командой   
+chsh -s $(which zsh) 
+3. Что бы перезагрузить exec zsh
+4. Установить путь к исполняемым файлам export PATH=$HOME/bin:/usr/local/bin:$PATH
+5. sh -c "$(curl -fsSL raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+6. install Powerlevel10k git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+7. Установить тему в файле .zshrc to ZSH_THEME="powerlevel10k/powerlevel10k"
+8. Установить плагины 
+
+# Syntax Highlighting`
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Auto Completion
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+9. В файлк .zshrc прописать plugins=( git zsh-syntax-highlighting zsh-autosuggestions )
+
+
+
+
+
+Если что то пшло не так нужно выполнить команды, соблюдая порядок действий
+
+sudo pacman --noconfirm -Rnc zsh
+sudo pacman --noconfirm -Sy zsh git
+rm "$HOME/.zshrc"
+rm -rf "$HOME/.oh-my-zsh"
+sudo rm -rf "/etc/zsh"
+sh -c "$(curl -fsSL raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
